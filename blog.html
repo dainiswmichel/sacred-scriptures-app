@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./blog.css">
+    <script defer src="./theme.js"></script>
+    <title>Creating a React Project - A Step by Step Guide</title>
+</head>
+<body>
+    <select id="mode" class="dropdown">
+        <option value="light">Light Mode</option>
+        <option value="dark">Dark Mode</option>
+    </select>
+
+    <h1>Creating a React Project - A Step by Step Guide</h1>
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <p>Now that you've learned the fundamentals of React, it's time to practice and expand your skills by making a React project from scratch! This assignment is open-ended when it comes to the actual content. You are free to create whatever you'd like, as long as it incorporates the requirements listed in these instructions.</p>
+    </section>
+    <section id="learning-goals">
+        <h2>Learning Goals</h2>
+        <h3>1. Build a React single page application from scratch</h3>
+        <p>
+            <strong>Build:</strong> In this context, "build" means to create or construct a web application. It involves writing the code, organizing the files and directories, setting up the server, and more.
+        </p>
+        <p>
+            <strong>React:</strong> React is a JavaScript library for building user interfaces, primarily for single-page applications. It was developed by Facebook in 2011 to power its news feed feature, and was later open-sourced in 2013. React is now maintained by Facebook and a community of individual developers and companies.
+        </p>
+        <p>
+            React is used by many large companies and startups alike for its efficient and flexible approach to building user interfaces. Some notable users of React include Facebook (for its news feed and Instagram site), Airbnb, Uber, Netflix, WhatsApp, and more.
+        </p>
+        <p>
+            The main reasons to not use React could be its learning curve, the need to write JavaScript extensively (even for simple tasks), and its library status (meaning you have to use other libraries to form a complete framework). React also uses a virtual DOM, which can be overkill for simple projects that don't require a high level of interactivity.
+        </p>
+        <p>
+            Alternatives to React include Angular, Vue.js, Svelte, and traditional server-side rendered applications. Each of these alternatives have their own strengths and weaknesses, and the choice between them often depends on the specific needs and constraints of the project.
+        </p>
+        <p>
+            <strong>Single Page Application (SPA):</strong> A single-page application is a web application or website that interacts with the user by dynamically rewriting the current web page with new data from the web server, instead of the default method of the browser loading entire new pages. The goal is faster transitions that make the website feel more like a native app. In an SPA, all necessary HTML, JavaScript, and CSS code is either retrieved by the browser with a single page load, or the appropriate resources are dynamically loaded and added to the page as necessary, usually in response to user actions. Yes, it can have a navigation bar and take users to various views. It's called a single page application because it only loads a single HTML page and then updates the body content dynamically as the user interacts with the app.
+        </p>
+        <p>
+            <strong>From Scratch:</strong> "From scratch" means starting from the beginning, without the use of any pre-existing elements. In the context of building a React application, it could mean setting up the development environment, creating the file structure, and writing all the code yourself. However, in practice, most developers use tools like "create-react-app" to set up the basic structure of the application, and then build the unique features of their app "from scratch" on top of that foundation.
+        </p>
+      
+        <h3>3. Incorporate client-side routing</h3>
+        <p>
+            <strong>Client-side routing</strong> is a method for managing navigation in a web application without requiring page reloads from the server. In client-side routing, the route is handled internally by the JavaScript that is already on the page. This means you can move around your application, but the server that served it remains oblivious to the fact that navigation has happened. This is a key aspect of single page applications (SPAs), where the goal is to provide a smooth, app-like user experience. For more details, refer to this <a href="https://www.freecodecamp.org/news/what-is-client-side-routing-in-react-banana/">FreeCodeCamp article on client-side routing</a> and this <a href="https://ui.dev/react-router-v4/">tutorial on React Router</a>, a popular library for client-side routing in React.
+        </p>
+
+        <h3>4. Use data from an API</h3>
+        <p>
+            An <strong>API</strong> (Application Programming Interface) is a set of rules that allows different software applications to communicate with each other. It defines methods and data formats that a program can use to perform tasks such as reading and writing data, and managing tasks. APIs are used to enable the interaction between different software systems, and can be used to retrieve data from a server, update data on a server, or perform other operations. For more details, refer to this <a href="https://www.mulesoft.com/resources/api/what-is-an-api">MuleSoft article on what is an API</a> and this <a href="https://www.tutorialspoint.com/reactjs/reactjs_rest_api.htm">tutorial on using APIs with React</a>.
+        </p> 
+    </section>
+
+<section id="requirements">
+    <h2>Requirements</h2>
+    <ul>
+        <li>You must make a single page application (only one index.html file) using create-react-app.</li>
+        <li>Your app should use at least 5 components in a way that keeps your code well organized.</li>
+        <li>There should be at least 3 client-side routes using React Router. Links to an external site. Be sure to include a nav bar or other UI element that allows users to navigate between routes.</li>
+        <li>Use a json-server to create a RESTful API for your backend and make both a GET and a POST request to the json server. Use a form to make your post request, specifically a controlled form/component. Additionally, you may choose to incorporate data from an external API but it is not required.</li>
+        <li>You should keep your json-server data simple: avoid nested data and associations. You'll learn how to work with more complex data in the next two phases. Focus on the frontend for this project.</li>
+        <li>Upon return of json from your POST request, a state update by a setState function is required!</li>
+        <li>Add some styling: you're encouraged to write your CSS from scratch, either by using styled components or writing CSS files and using id/className to style your elements. You can also incorporate a UI framework (like React Bootstrap, Semantic UI, or Material UI) if you prefer.</li>
+    </ul>
+    <pre>
+        // in App:
+        function addMovie(newMovie){
+            setMovies([...movies, newMovie]) // Updating movies state.
+        }
+
+        //in Form
+        const configObj = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({title: "Titanic"})
+        }
+
+        fetch('http://localhost:3000/movies', configObj)
+            .then(res => res.json())
+            .then(data => addMovie(data)) //THIS STATE UPDATE IS REQUIRED!!!
+            // clear form
+    </pre>
+    <p>Remember: responsibility for re-rendering the page to display the updated list of movies should belong to the addMovie function; depending on a subsequent action to load the new data is not best practice.</p>
+</section>
+<section id="brainstorming">
+    <h2>Brainstorming</h2>
+    <p>Here are some project ideas:</p>
+    <ol>
+        <h3><li>Movie Database App</li></h3>
+        <p>This app would use an external API to fetch movie data. It would have components like MovieList, MovieDetail, SearchForm, and AddMovieForm. The app would make GET requests to fetch movies and POST requests to add a movie to a favorites list stored in a json-server.</p>
+
+        <h3><li>Task Tracker App</li></h3>
+        <p>This app would use a json-server as a backend to store tasks. It would have components like TaskList, TaskDetail, AddTaskForm, and EditTaskForm. The app would make GET requests to fetch tasks and POST requests to add a new task.</p>
+
+        <h3><li>Recipe Finder App</li></h3>
+        <p>This app would use an external API to fetch recipe data. It would have components like RecipeList, RecipeDetail, SearchForm, and AddRecipeForm. The app would make GET requests to fetch recipes and POST requests to add a recipe to a favorites list stored in a json-server.</p>
+
+        <h3><li>Sacred Texts Reader and Notes App</li></h3>
+        <p>This app would use multiple external APIs to fetch sacred texts. It would have components like TextList, TextDetail, AddNoteForm, and Navbar. The app would make GET requests to fetch texts and POST requests to add a note to a text stored in a json-server.</p>
+    </ol>
+</section>
+<section id="brainstorming-further">
+    <h2>Brainstorming further</h2>
+    <h3>Sacred Texts Reader and Notebook App</h3>
+    <p>This application would allow users to read sacred texts from various religions and make notes. The app would use at least 5 components (e.g., TextList, TextDetail, AddNoteForm, Navbar, and App). It would have at least 3 routes (e.g., Home, Text Detail, and Add Note). The app would use multiple APIs to fetch the sacred texts, and a json-server to store the user's notes. It would make both GET requests to the text APIs and GET/POST requests to the json-server. The POST request would be made from a controlled form in the AddNoteForm component. The app would also use state to manage the list of texts and notes, and it would update this state whenever a new note is added.</p>
+    <p>This idea would provide a good opportunity to practice working with multiple APIs, managing complex state, and building a useful and interactive web application. It would also be a unique project that could stand out in your portfolio.</p>
+    <pre>
+        // In App.js
+        function App() {
+            const [texts, setTexts] = useState([]);
+            const [notes, setNotes] = useState([]);
+
+            // Fetch texts from API
+            useEffect(() => {
+                fetch('http://api.example.com/texts')
+                    .then(res => res.json())
+                    .then(setTexts);
+            }, []);
+
+            // Add note
+            function addNote(newNote) {
+                setNotes([...notes, newNote]);
+            }
+
+            // In AddNoteForm.js
+            const configObj = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(newNote)
+            }
+
+            fetch('http://localhost:3000/notes', configObj)
+                .then(res => res.json())
+                .then(addNote);
+        }
+    </pre>
+</section>
+
+<section id="potential-apis">
+    <h2>Potential APIs</h2>
+
+    <h3>Bible</h3>
+    <ul>
+        <li><a href="https://bible-api.com">bible-api.com</a></li>
+        <li><a href="https://scripture.api.bible">API.Bible</a></li>
+        <li><a href="https://api.esv.org">ESV API ESV.org: ESV API</a></li>
+    </ul>
+
+    <h3>Quran</h3>
+    <ul>
+        <li><a href="https://alquran.cloud/api">Quran Foundation API Docs - Quran.com: Quran API Documentation</a></li>
+        <li><a href="https://github.com/gadingnst/quran-api">gadingnst/quran-api - GitHub: gadingnst/quran-api</a></li>
+        <li><a href="https://quranjs.com">QuranJS / API: Introduction: QuranJS</a></li>
+        <li><a href="https://github.com/fawazahmed0/quran-api">fawazahmed0/quran-api - GitHub: fawazahmed0/quran-api</a></li>
+        <li><a href="https://alquran.cloud/api">Quran API - Al Quran Cloud: Al Quran Cloud API</a></li>
+        <li><a href="https://quran.com/en/developers">Developers - Quran.com: Quran.com Developers</a></li>
+    </ul>
+
+    <h3>Hinduism</h3>
+    <ul>
+        <li><a href="https://github.com/topics/hinduism">Bhagavad Gita API: Bhagavad Gita API</a></li>
+    </ul>
+
+    <h3>Buddhism</h3>
+    <ul>
+        <li><a href="https://codebuckets.com/2021/10/22/buddhist-texts-api-dhammapada/">Buddhist Texts API: Dhammapada - Code Buckets: Buddhist Texts API: Dhammapada</a></li>
+        <li><a href="https://www.aathaapi.org">Aathaapi - Pure Theravada Buddhism Exposed: Aathaapi</a></li>
+    </ul>
+
+    <h3>Jainism and Zoroastrianism</h3>
+    <p>The search results did not provide direct links to APIs for Jainism and Zoroastrianism sacred texts.</p>
+</section>
+
+<section id="finding-best-apis">
+    <h2>Finding the Best APIs</h2>
+
+    <h3>Bible</h3>
+    <ul>
+        <li><a href="https://bible-api.com">bible-api.com</a>: This API provides a comprehensive set of endpoints for accessing Bible text and related information. It offers various translations and versions of the Bible, including the English Standard Version (ESV).</li>
+  </ul>
+
+    <h3>Quran</h3>
+    <ul>
+        <li><a href="https://alquran.cloud/api">Quran Foundation API Docs - Quran.com</a>: This API provides access to the Quran text, translations, and related information. It offers various endpoints for retrieving specific verses, chapters, and translations.</li>
+    </ul>
+
+    <h3>Hinduism</h3>
+    <ul>
+        <li><a href="https://github.com/topics/hinduism">Bhagavad Gita API</a>: This API specifically focuses on providing access to the Bhagavad Gita text. It offers endpoints for retrieving verses, chapters, and translations.</li>
+    </ul>
+
+    <h3>Buddhism</h3>
+    <ul>
+        <li><a href="https://codebuckets.com/2021/10/22/buddhist-texts-api-dhammapada/">Buddhist Texts API: Dhammapada - Code Buckets</a>: This API focuses on providing access to Buddhist texts, specifically the Dhammapada. It offers endpoints for retrieving verses and translations.</li>
+    </ul>
+</section>
+    <section id="installation">
+            <h2>Installation</h2>
+            <p>
+                    Follow these steps to create a new React application:
+                    <ol>
+                            <li>Navigate to the directory where you want to create your app.</li>
+                            <li>Create a new directory for your app: <code>mkdir sacred-scriptures-app</code></li>
+                            <li>Move into the new directory: <code>cd sacred-scriptures-app</code></li>
+                            <li>Initialize a new React app in the current directory: <code>npx create-react-app .</code></li>
+                            <li>Start the development server: <code>npm start</code></li>
+                    </ol>
+                    Now, you should be able to see your new React application by opening <code>http://localhost:3000</code> in your browser.
+            </p>
+            <p>
+                    Here's an example of what your terminal might look like during this process:
+                    <pre><code>
+    dainismichel@z1 phase-2-parallel-project % mkdir sacred-scriptures-app
+    dainismichel@z1 phase-2-parallel-project % cd sacred-scriptures-app
+    dainismichel@z1 sacred-scriptures-app % npx create-react-app .
+
+    Creating a new React app in /Users/dainismichel/Development/code/phase-2/phase-2-parallel-project/sacred-scriptures-app.
+
+    Installing packages. This might take a couple of minutes.
+    Installing react, react-dom, and react-scripts with cra-template...
+
+    ...
+
+    Success! Created sacred-scriptures-app at /Users/dainismichel/Development/code/phase-2/phase-2-parallel-project/sacred-scriptures-app
+    Inside that directory, you can run several commands:
+
+        npm start
+            Starts the development server.
+
+        npm run build
+            Bundles the app into static files for production.
+
+        npm test
+            Starts the test runner.
+
+        npm run eject
+            Removes this tool and copies build dependencies, configuration files
+            and scripts into the app directory. If you do this, you can’t go back!
+
+    We suggest that you begin by typing:
+
+        cd /Users/dainismichel/Development/code/phase-2/phase-2-parallel-project/sacred-scriptures-app
+        npm start
+
+    Happy hacking!
+    dainismichel@z1 sacred-scriptures-app %
+                    </code></pre>
+            </p>
+    </section>
+
+<section id="running-npm-start">
+    <h2>Running npm start</h2>
+    <p>
+        After running the command <code>npm start</code>, the application compiled successfully and is now running on a local development server. You can view the application in your web browser at <a href="http://localhost:3000">http://localhost:3000</a> or on your network at the displayed network URL.
+    </p>
+    <p>
+        Note that this is a development build, which is not optimized for production. To create an optimized production build, you would use the command <code>npm run build</code>.
+    </p>
+    <p>
+        Here's an example of what your terminal might display after running <code>npm start</code>:
+        <pre>
+            Compiled successfully!
+
+            You can now view sacred-scriptures-app in the browser.
+
+            Local:            http://localhost:3000
+            On Your Network:  http://192.168.101.2:3000
+
+            Note that the development build is not optimized.
+            To create a production build, use npm run build.
+
+            webpack compiled successfully
+        </pre>
+    </p>
+    <p>
+        When you created the React application, several directories and files were created:
+        <ul>
+            <li><code>node_modules/</code>: This directory contains all the npm packages that your application depends on.</li>
+            <li><code>public/</code>: This directory contains the static files that your application will serve, such as the index.html file.</li>
+            <li><code>src/</code>: This directory contains the JavaScript and CSS files for your application. This is where you will do most of your work.</li>
+            <li><code>package.json</code>: This file lists the packages your project depends on, specifies versions of a package that your project can use using semantic versioning rules, makes your build reproducible, and therefore easier to share with other developers.</li>
+            <li><code>package-lock.json</code>: This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. You won’t change this file directly.</li>
+        </ul>
+    </p>
+</section>
+
+    <section id="creating-react-app">
+        <h2>Creating the React App</h2>
+
+        <p>We are now going to connect to each Sacred Scriptures API one by one, step by step. Here are the APIs we will be working with, in the sequence we will connect to them:</p>
+
+        <h3>Bible</h3>
+        <ul>
+            <li><a href="https://bible-api.com">bible-api.com</a>: This API provides a comprehensive set of endpoints for accessing Bible text and related information. It offers various translations and versions of the Bible, including the English Standard Version (ESV).</li>
+        </ul>
+
+        <h3>Quran</h3>
+        <ul>
+            <li><a href="https://alquran.cloud/api">Quran Foundation API Docs - Quran.com</a>: This API provides access to the Quran text, translations, and related information. It offers various endpoints for retrieving specific verses, chapters, and translations.</li>
+        </ul>
+
+        <h3>Hinduism</h3>
+        <ul>
+            <li><a href="https://github.com/topics/hinduism">Bhagavad Gita API</a>: This API specifically focuses on providing access to the Bhagavad Gita text. It offers endpoints for retrieving verses, chapters, and translations.</li>
+        </ul>
+
+        <h3>Buddhism</h3>
+        <ul>
+            <li><a href="https://codebuckets.com/2021/10/22/buddhist-texts-api-dhammapada/">Buddhist Texts API: Dhammapada - Code Buckets</a>: This API focuses on providing access to Buddhist texts, specifically the Dhammapada. It offers endpoints for retrieving verses and translations.</li>
+        </ul>
+    </section>
+
+    <section id="app-vs-index">
+        <h2>Understanding App.js and Index.js</h2>
+
+        <p>In a React application, <code>App.js</code> and <code>index.js</code> play distinct roles:</p>
+
+        <h3>App.js</h3>
+        <p>
+            <code>App.js</code> is the main component of your React application. It is often the parent component of other components in your app. This is where you define the structure of your webpage and include other components. It's like the blueprint of your application's user interface. If you want to start with a simple "Hello World" test, you would place it in this file. For example:
+        </p>
+        <pre>
+        <code>
+            import React from 'react';
+
+            function App() {
+                return (
+                    &lt;div className="App"&gt;
+                        &lt;p&gt;Hello World&lt;/p&gt;
+                    &lt;/div&gt;
+                );
+            }
+
+            export default App;
+        </code>
+        </pre>
+        <h3>Index.js</h3>
+        <p>
+            <code>index.js</code> is the entry point of your React application. It's where your <code>App.js</code> component is rendered to the DOM using the <code>ReactDOM.render()</code> method. This file also includes the service worker registration for progressive web apps and is where you would set up any necessary providers (like Redux or Context API providers).
+        </p>
+    </section>
+
+    <section id="illustration-01">
+        <figure>
+            <img src="media/Screenshot 2024-03-29 at 3.55.12 AM.png" alt="Illustration 01">
+            <figcaption class="figure-caption">Illustration</figcaption>
+        </figure>
+    </section>
+
+    <!-- More sections will be added as we progress -->
+</body>
+</html>

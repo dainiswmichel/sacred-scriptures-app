@@ -1,0 +1,58 @@
+/* blog.css */
+
+:root {
+    --background-color-light: #f5f5f5;
+    --color-light: #333333;
+    --background-color-dark: #121212;
+    --color-dark: #f5f5f5;
+    --transition-duration: 0.5s;
+    --transition-timing-function: ease;
+}
+
+body {
+    background-color: var(--background-color-light);
+    color: var(--color-light);
+    transition: background-color var(--transition-duration) var(--transition-timing-function), color var(--transition-duration) var(--transition-timing-function);
+}
+
+body.light-mode {
+    background-color: var(--background-color-light);
+    color: var(--color-light);
+}
+
+body.dark-mode {
+    background-color: var(--background-color-dark);
+    color: var(--color-dark);
+}
+
+.dropdown {
+    width: 200px;
+    height: 30px;
+    background-color: var(--background-color-light);
+    color: var(--color-light);
+    transition: background-color var(--transition-duration) var(--transition-timing-function), color var(--transition-duration) var(--transition-timing-function);
+}
+
+body.dark-mode .dropdown {
+    background-color: var(--background-color-dark);
+    color: var(--color-dark);
+}
+
+
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#illustration-01 figure {
+    display: flex;
+    justify-content: center;
+}
+#illustration-01 img {
+    width: 93%;
+    max-width: 93%;
+}
